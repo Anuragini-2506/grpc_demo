@@ -1,0 +1,23 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.example.myapplication";
+
+service YourService {
+  rpc Connect(stream ClientInfo) returns (stream Response);
+  rpc SendMessageToClient(stream Message) returns (stream Empty);
+}
+
+message ClientInfo {
+  string client_id = 1;
+}
+
+message Message {
+  string client_id = 1;
+  string message = 2;
+}
+
+message Response {
+  string message = 1;
+}
+
+message Empty {}
